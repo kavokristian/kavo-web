@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Kavo — Synlighet på nett for norske bedrifter",
   description:
     "Du er ekspert på faget ditt. Kavo sørger for at bedriften din er synlig på nett, lett å finne på Google og gir et godt førsteinntrykk.",
+  verification: {
+    google: "tEK86jlREKzra7UfTAUn9_39aIG7bKRHp8wJ1X2Upl0",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
