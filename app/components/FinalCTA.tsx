@@ -18,14 +18,14 @@ export function FinalCTA() {
 
             <div className="relative mx-auto max-w-xl">
               <h2 className="text-[1.75rem] font-semibold tracking-tight text-white sm:text-[2.5rem] sm:leading-tight">
-                Klar for flere kunder?
+                Klar for å bli synlig?
               </h2>
               <p className="mt-4 text-[1.0625rem] leading-relaxed text-white/80 sm:text-lg">
                 Book en uforpliktende samtale. Vi forteller deg ærlig om vi kan
                 hjelpe — og hvordan.
               </p>
               <a
-                href="mailto:hei@kavo.no"
+                href="mailto:kontakt@kavo.no"
                 className="mt-9 inline-flex h-12 items-center justify-center rounded-full bg-white px-8 text-[0.9375rem] font-medium text-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Book gratis samtale
@@ -33,10 +33,10 @@ export function FinalCTA() {
               <p className="mt-5 text-sm text-white/55">
                 Eller skriv til{" "}
                 <a
-                  href="mailto:hei@kavo.no"
+                  href="mailto:kontakt@kavo.no"
                   className="text-white/85 underline-offset-2 hover:underline"
                 >
-                  hei@kavo.no
+                  kontakt@kavo.no
                 </a>
               </p>
             </div>

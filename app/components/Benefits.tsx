@@ -29,9 +29,8 @@ export function Benefits() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="max-w-2xl">
-            <p className="text-sm font-medium text-accent">Fordeler</p>
-            <h2 className="mt-3 text-[1.75rem] font-semibold tracking-tight text-foreground sm:text-[2.25rem]">
-              Bygget for å skape tillit — og resultater
+            <h2 className="text-[2.25rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem] md:text-[3rem]">
+              Fordeler
             </h2>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
               En god nettside er ikke pynt. Den er et verktøy som gjør det
@@ -42,7 +41,10 @@ export function Benefits() {
 
         <div className="mt-14 grid gap-x-10 gap-y-12 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((item, i) => (
-            <Reveal key={item.title} delay={(Math.min(i + 1, 4) as 1 | 2 | 3 | 4)}>
+            <Reveal
+              key={item.title}
+              delay={(Math.min(i + 1, 4) as 1 | 2 | 3 | 4)}
+            >
               <div className="relative">
                 <div className="mb-4 h-px w-8 bg-accent" />
                 <h3 className="text-[1.0625rem] font-semibold tracking-tight text-foreground">

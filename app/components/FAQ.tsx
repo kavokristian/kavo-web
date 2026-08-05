@@ -5,14 +5,14 @@ import { Reveal } from "./Reveal";
 
 const faqs = [
   {
-    question: "Hva koster en nettside hos Kavo?",
+    question: "Hva koster det?",
     answer:
       "Prisen avhenger av omfanget, men du får alltid et klart tilbud før vi starter. Ingen skjulte kostnader eller timebaserte overraskelser.",
   },
   {
     question: "Hvor lang tid tar det?",
     answer:
-      "De fleste prosjekter er klare i løpet av noen uker. Vi avtaler en tydelig tidslinje i den første samtalen, så du vet hva du kan forvente.",
+      "De fleste er synlige på nett i løpet av noen uker. Vi avtaler en tydelig tidslinje i den første samtalen, så du vet hva du kan forvente.",
   },
   {
     question: "Må jeg levere tekst og bilder selv?",
@@ -22,12 +22,12 @@ const faqs = [
   {
     question: "Fungerer nettsiden på mobil?",
     answer:
-      "Ja. Alle nettsider vi leverer er mobilvennlige, raske og enkle å bruke — fordi det er der de fleste kundene dine søker.",
+      "Ja. Alt vi leverer er mobilvennlig, raskt og enkelt å bruke — fordi det er der de fleste kundene dine søker.",
   },
   {
-    question: "Hva skjer etter lansering?",
+    question: "Hva skjer etter at alt er publisert?",
     answer:
-      "Du får en nettside som er klar til bruk. Vi kan også hjelpe med drift, små oppdateringer og videre forbedringer etter behov.",
+      "Vi følger opp. Du kan også få hjelp med drift, små oppdateringer og videre forbedringer når du trenger det.",
   },
   {
     question: "Passer dette for min type bedrift?",
@@ -44,9 +44,8 @@ export function FAQ() {
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <Reveal>
           <div className="text-center">
-            <p className="text-sm font-medium text-accent">FAQ</p>
-            <h2 className="mt-3 text-[1.75rem] font-semibold tracking-tight text-foreground sm:text-[2.25rem]">
-              Vanlige spørsmål
+            <h2 className="text-[2.25rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem] md:text-[3rem]">
+              FAQ
             </h2>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
               Kort og ærlig — det folk vanligvis lurer på før de tar kontakt.
@@ -58,7 +57,10 @@ export function FAQ() {
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
-              <Reveal key={faq.question} delay={i < 4 ? ((i + 1) as 1 | 2 | 3 | 4) : undefined}>
+              <Reveal
+                key={faq.question}
+                delay={i < 4 ? ((i + 1) as 1 | 2 | 3 | 4) : undefined}
+              >
                 <div className="border-b border-border">
                   <button
                     type="button"

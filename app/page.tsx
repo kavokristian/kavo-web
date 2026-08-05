@@ -6,7 +6,6 @@ import { Hero } from "./components/Hero";
 import { HowItWorks } from "./components/HowItWorks";
 import { Navbar } from "./components/Navbar";
 import { Services } from "./components/Services";
-import { Testimonials } from "./components/Testimonials";
 import { WhyKavo } from "./components/WhyKavo";
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
         <Services />
         <HowItWorks />
         <WhyKavo />
-        <Testimonials />
         <FAQ />
         <FinalCTA />
       </main>

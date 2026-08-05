@@ -14,12 +14,13 @@ export function Footer() {
           <div>
             <a
               href="#"
-              className="text-lg font-semibold tracking-tight text-foreground"
+              className="text-xl font-semibold tracking-tight text-foreground sm:text-[1.375rem]"
             >
               Kavo
             </a>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
-              Moderne nettsider for håndverkere og småbedrifter i Norge.
+              Vi gjør bedriften din synlig på nett — slik at flere kunder finner
+              deg.
             </p>
           </div>
 
@@ -44,10 +45,10 @@ export function Footer() {
             © {new Date().getFullYear()} Kavo. Alle rettigheter forbeholdt.
           </p>
           <a
-            href="mailto:hei@kavo.no"
+            href="mailto:kontakt@kavo.no"
             className="text-sm text-muted transition-colors hover:text-foreground"
           >
-            hei@kavo.no
+            kontakt@kavo.no
           </a>
         </div>
       </div>

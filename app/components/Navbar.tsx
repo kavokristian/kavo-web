@@ -38,7 +38,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.25rem] sm:px-8">
         <a
           href="#"
-          className="text-[1.125rem] font-semibold tracking-tight text-foreground"
+          className="text-[1.375rem] font-semibold tracking-tight text-foreground sm:text-[1.5rem]"
           aria-label="Kavo – hjem"
         >
           Kavo

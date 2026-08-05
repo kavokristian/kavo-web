@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kavo — Moderne nettsider for norske bedrifter",
+  title: "Kavo — Synlighet på nett for norske bedrifter",
   description:
-    "Kavo hjelper håndverkere og småbedrifter i Norge med moderne nettsider som bygger tillit og skaffer flere kunder.",
+    "Du er ekspert på faget ditt. Kavo sørger for at bedriften din er synlig på nett, lett å finne på Google og gir et godt førsteinntrykk.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

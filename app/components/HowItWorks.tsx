@@ -3,27 +3,27 @@ import { Reveal } from "./Reveal";
 const steps = [
   {
     number: "01",
-    title: "Vi snakker sammen",
+    title: "Vi blir kjent",
     description:
-      "En kort, uforpliktende samtale om bedriften din, kundene dine og hva du trenger.",
+      "En kort prat om bedriften din, kundene dine og hva du ønsker å oppnå.",
   },
   {
     number: "02",
-    title: "Vi designer",
+    title: "Vi gjør jobben",
     description:
-      "Du får et klart forslag tilpasset bransjen din — enkelt å forstå, enkelt å si ja til.",
+      "Vi setter opp det du trenger for å bli synlig på nett. Alt fra synlighet på Google til en profesjonell nettside.",
   },
   {
     number: "03",
-    title: "Vi bygger og lanserer",
+    title: "Du godkjenner",
     description:
-      "Ferdig nettside, klar til å ta imot kunder. Mobilvennlig, rask og profesjonell.",
+      "Vi viser deg resultatet og gjør eventuelle justeringer før vi går live.",
   },
   {
     number: "04",
     title: "Vi følger opp",
     description:
-      "Du er ikke alene etter lansering. Vi hjelper deg med små justeringer og videre drift.",
+      "Vi passer på at alt fungerer, holder nettsiden i full drift og er tilgjengelige når du trenger oss.",
   },
 ];
 
@@ -33,19 +33,17 @@ export function HowItWorks() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium text-accent">Prosessen</p>
-            <h2 className="mt-3 text-[1.75rem] font-semibold tracking-tight text-foreground sm:text-[2.25rem]">
+            <h2 className="text-[2.25rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem] md:text-[3rem]">
               Slik fungerer Kavo
             </h2>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
-              En ryddig prosess uten overraskelser. Du vet alltid hva som skjer
-              — og når.
+              Det skal være enkelt å bli synlig på nett. Vi tar oss av jobben,
+              og du godkjenner underveis.
             </p>
           </div>
         </Reveal>
 
         <div className="relative mt-16 sm:mt-20">
-          {/* Connecting line — desktop */}
           <div
             className="pointer-events-none absolute left-0 right-0 top-[1.125rem] hidden h-px bg-border lg:block"
             aria-hidden="true"

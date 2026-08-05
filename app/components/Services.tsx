@@ -2,24 +2,19 @@ import { Reveal } from "./Reveal";
 
 const services = [
   {
-    title: "Ny nettside",
+    title: "Du blir funnet",
     description:
-      "Fra idé til lansering. En moderne nettside tilpasset bransjen din og målene dine.",
+      "Vi sørger for at bedriften din dukker opp når kunder søker etter tjenestene dine på Google og Google Maps.",
   },
   {
-    title: "Oppgradering",
+    title: "Du gir et godt førsteinntrykk",
     description:
-      "Har du allerede en nettside? Vi gjør den raskere, tydeligere og mer profesjonell.",
+      "En moderne nettside som gjør det enkelt å stole på bedriften din og ta kontakt.",
   },
   {
-    title: "Synlighet",
+    title: "Du slipper å tenke på det",
     description:
-      "Grunnleggende SEO slik at flere lokale kunder faktisk finner deg på Google.",
-  },
-  {
-    title: "Drift og support",
-    description:
-      "Vi holder nettsiden oppdatert, trygg og i gang — så du kan fokusere på jobben.",
+      "Vi holder alt oppdatert og fungerer som din digitale samarbeidspartner.",
   },
 ];
 
@@ -32,20 +27,23 @@ export function Services() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="max-w-2xl">
-            <p className="text-sm font-medium text-accent">Tjenester</p>
-            <h2 className="mt-3 text-[1.75rem] font-semibold tracking-tight text-foreground sm:text-[2.25rem]">
-              Det vi leverer
+            <h2 className="text-[2.25rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem] md:text-[3rem]">
+              Tjenester
             </h2>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
-              Enkel, tydelig leveranse — uten byrå-jargon og unødvendige
-              tillegg.
+              Du slipper å forholde deg til nettsider, Google eller tekniske
+              løsninger. Vi sørger for at bedriften din er synlig, ser
+              profesjonell ut og fungerer som den skal.
             </p>
           </div>
         </Reveal>
 
         <div className="mt-14 divide-y divide-border border-y border-border sm:mt-16">
           {services.map((service, i) => (
-            <Reveal key={service.title} delay={(Math.min(i + 1, 4) as 1 | 2 | 3 | 4)}>
+            <Reveal
+              key={service.title}
+              delay={(Math.min(i + 1, 4) as 1 | 2 | 3 | 4)}
+            >
               <div className="group grid gap-3 py-8 transition-colors duration-300 sm:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] sm:items-baseline sm:gap-12 sm:py-10">
                 <div className="flex items-baseline gap-4">
                   <span className="font-mono text-xs text-muted-light tabular-nums">
