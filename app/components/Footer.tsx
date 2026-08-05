@@ -41,9 +41,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-muted-light">
-            © {new Date().getFullYear()} Kavo. Alle rettigheter forbeholdt.
-          </p>
+          <div className="text-sm text-muted-light">
+            <p>© {new Date().getFullYear()} Kavo Nystad</p>
+            <p className="mt-1">Org.nr. 920 801 293</p>
+          </div>
           <a
             href="mailto:kontakt@kavo.no"
             className="text-sm text-muted transition-colors hover:text-foreground"

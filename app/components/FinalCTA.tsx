@@ -6,7 +6,6 @@ export function FinalCTA() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <div className="relative overflow-hidden rounded-[1.75rem] bg-accent px-6 py-16 text-center sm:rounded-[2rem] sm:px-12 sm:py-20">
-            {/* Soft atmosphere inside CTA */}
             <div
               className="pointer-events-none absolute inset-0 opacity-40"
               aria-hidden="true"
@@ -18,27 +17,20 @@ export function FinalCTA() {
 
             <div className="relative mx-auto max-w-xl">
               <h2 className="text-[1.75rem] font-semibold tracking-tight text-white sm:text-[2.5rem] sm:leading-tight">
-                Klar for å bli synlig?
+                Har du ikke nettside?
               </h2>
               <p className="mt-4 text-[1.0625rem] leading-relaxed text-white/80 sm:text-lg">
-                Book en uforpliktende samtale. Vi forteller deg ærlig om vi kan
-                hjelpe — og hvordan.
+                Vi kan ha deg synlig på nett i løpet av få dager.
               </p>
-              <a
-                href="mailto:kontakt@kavo.no"
-                className="mt-9 inline-flex h-12 items-center justify-center rounded-full bg-white px-8 text-[0.9375rem] font-medium text-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                Book gratis samtale
-              </a>
-              <p className="mt-5 text-sm text-white/55">
-                Eller skriv til{" "}
+              <div className="mt-9">
+                <p className="text-sm text-white/55">Kontakt oss</p>
                 <a
                   href="mailto:kontakt@kavo.no"
-                  className="text-white/85 underline-offset-2 hover:underline"
+                  className="mt-2 inline-block text-[1.125rem] font-semibold tracking-tight text-white underline-offset-4 transition-opacity hover:opacity-90 hover:underline sm:text-xl"
                 >
                   kontakt@kavo.no
                 </a>
-              </p>
+              </div>
             </div>
           </div>
         </Reveal>

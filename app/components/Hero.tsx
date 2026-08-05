@@ -24,7 +24,7 @@ export function Hero() {
               href="#kontakt"
               className="inline-flex h-12 w-full items-center justify-center rounded-full bg-accent px-7 text-[0.9375rem] font-medium text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 hover:shadow-[0_1px_2px_rgba(37,99,235,0.25),0_12px_28px_rgba(37,99,235,0.3)] active:scale-[0.98] sm:w-auto"
             >
-              Book gratis samtale
+              Kontakt oss
             </a>
             <a
               href="#slik-fungerer-det"

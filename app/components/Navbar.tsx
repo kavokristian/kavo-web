@@ -62,7 +62,7 @@ export function Navbar() {
             href="#kontakt"
             className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[0.875rem] font-medium text-white transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
-            Book samtale
+            Kontakt oss
           </a>
         </div>
 
@@ -111,7 +111,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="mt-3 flex h-12 items-center justify-center rounded-full bg-foreground text-[0.9375rem] font-medium text-white"
           >
-            Book samtale
+            Kontakt oss
           </a>
         </div>
       </div>
