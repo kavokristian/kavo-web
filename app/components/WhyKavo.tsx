@@ -9,7 +9,7 @@ const reasons = [
   },
   {
     title: "Fast pris",
-    description: "5 000 kr + 500 kr/mnd. Ingen overraskelser.",
+    description: "7 500 kr + 500 kr/mnd. Ingen overraskelser.",
     icon: IconCoin,
   },
   {

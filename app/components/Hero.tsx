@@ -1,6 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const customerImages = [
+  {
+    src: "/hero-lokal-bedrift.jpg",
+    alt: "Salongeier som blir synlig på nett",
+  },
+  {
+    src: "/hero-handverk-mann.jpg",
+    alt: "Håndverker som blir synlig på nett",
+  },
+];
+
 export function Hero() {
   return (
     <section className="bg-atmosphere relative overflow-hidden">
@@ -24,25 +35,29 @@ export function Hero() {
               href="/bestill-demo"
               className="inline-flex h-12 w-full max-w-md items-center justify-center rounded-full bg-accent px-7 text-center text-[0.9375rem] font-medium leading-snug text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 hover:shadow-[0_1px_2px_rgba(37,99,235,0.25),0_12px_28px_rgba(37,99,235,0.3)] active:scale-[0.98] sm:w-auto sm:max-w-none"
             >
-              Få et gratis utkast av nettsiden din
+              Få gratis utkast
             </Link>
           </div>
         </div>
 
         <div className="animate-scale-in delay-400 relative mt-14 sm:mt-20">
-          <div className="animate-float mx-auto max-w-5xl">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-t-[1.25rem] border border-b-0 border-border/80 shadow-[0_0_0_1px_rgba(0,0,0,0.03),0_20px_50px_-12px_rgba(17,17,17,0.18)] sm:rounded-t-[1.75rem]">
-              <Image
-                src="/hero-synlighet.jpg"
-                alt="Håndverker som blir synlig på nett med en enkel, profesjonell nettside"
-                fill
-                priority
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 1024px"
-              />
-            </div>
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+            {customerImages.map((image, index) => (
+              <div
+                key={image.src}
+                className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] border border-border/70 shadow-[0_16px_40px_-20px_rgba(17,17,17,0.25)] sm:rounded-[1.5rem]"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  priority={index === 0}
+                  className="object-cover object-center"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              </div>
+            ))}
           </div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent sm:h-32" />
         </div>
       </div>
     </section>

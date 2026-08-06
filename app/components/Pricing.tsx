@@ -6,8 +6,8 @@ const included = [
   "Profesjonell nettside",
   "Hosting og domene",
   "Drift og vedlikehold",
-  "Løpende endringer",
-  "Synlighet på Google",
+  "Enkle endringer underveis (tekst, bilder, nye sider)",
+  "Grunnleggende synlighet på Google",
   "Google Business Profile",
   "Mobiltilpasset design",
   "Support",
@@ -35,7 +35,7 @@ export function Pricing() {
             <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-8">
               <div className="text-center">
                 <p className="text-[2.75rem] font-semibold tracking-tight text-foreground sm:text-[3.25rem]">
-                  5 000 kr
+                  7 500 kr
                 </p>
                 <p className="mt-1 text-sm text-muted">Engangskostnad</p>
               </div>
@@ -59,7 +59,8 @@ export function Pricing() {
             </div>
 
             <p className="mt-6 text-center text-sm text-muted">
-              12 måneders binding. Du beholder domenet hvis du avslutter.
+              12 måneders binding. Ved oppsigelse får du nettsiden til odel og
+              eie - inkludert domenet.
             </p>
 
             <div className="my-8 h-px bg-border" />
@@ -85,9 +86,9 @@ export function Pricing() {
             <div className="mt-8 flex justify-center">
               <Link
                 href="/bestill-demo"
-                className="inline-flex h-12 w-full max-w-md items-center justify-center rounded-full bg-accent px-7 text-center text-[0.9375rem] font-medium leading-snug text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 sm:w-auto sm:max-w-none"
+                className="inline-flex h-12 w-full items-center justify-center rounded-full bg-accent px-7 text-[0.9375rem] font-medium text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 sm:w-auto"
               >
-                Få et gratis utkast av nettsiden din
+                Få gratis utkast
               </Link>
             </div>
           </div>

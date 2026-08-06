@@ -26,7 +26,7 @@ const offerings = [
     number: "02",
     title: "Synlig på Google",
     description:
-      "Vi sørger for at bedriften din kan bli funnet når kunder søker etter tjenestene dine.",
+      "Vi setter opp det tekniske grunnlaget slik at Google forstår nettsiden din, og at bedriften kan bli funnet i søk og på Maps.",
     features: [
       { label: "Google-søk", icon: <IconSearch /> },
       { label: "Google Maps", icon: <IconMapPin /> },
@@ -36,7 +36,7 @@ const offerings = [
     number: "03",
     title: "Drift uten stress",
     description:
-      "Vi passer på nettsiden etter lansering - oppdateringer, sikkerhet og support inkludert.",
+      "Vi passer på nettsiden etter lansering - inkludert enkle endringer som tekst, bilder og nye sider.",
     features: [
       { label: "Drift og oppdateringer", icon: <IconRefresh /> },
       { label: "Support", icon: <IconHeadset /> },

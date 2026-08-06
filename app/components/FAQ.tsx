@@ -7,12 +7,22 @@ const faqs = [
   {
     question: "Hva koster det?",
     answer:
-      "Det koster 5 000 kr engang, pluss 500 kr i måneden. Alt er inkludert - nettside, hosting, drift, Google-synlighet og support. Avtalen har 12 måneders binding.",
+      "Det koster 7 500 kr engang, pluss 500 kr i måneden. Alt er inkludert - nettside, hosting, drift, grunnleggende Google-synlighet og support. Avtalen har 12 måneders binding.",
   },
   {
     question: "Hva skjer hvis jeg avslutter?",
     answer:
-      "Du beholder domenet ditt. Nettsiden og driften hos Kavo avsluttes, men domenet er ditt.",
+      "Du får nettsiden til odel og eie, inkludert domenet. Driften hos Kavo avsluttes, men alt innhold og domenet er ditt.",
+  },
+  {
+    question: "Hva menes med enkle endringer?",
+    answer:
+      "Ting som å bytte bilder, oppdatere tekst, legge til en ny side eller justere kontaktinfo. Større ombygginger avtales separat.",
+  },
+  {
+    question: "Betyr «synlig på Google» at vi kommer øverst i søk?",
+    answer:
+      "Nei. Vi setter opp det tekniske grunnlaget slik at Google forstår nettsiden din, og at bedriften kan bli funnet i søk og på Maps. Ranking over tid avhenger også av konkurranse og innhold.",
   },
   {
     question: "Hvor lang tid tar det?",
@@ -20,14 +30,9 @@ const faqs = [
       "Du får et gratis utkast innen 2-3 virkedager. Når du er fornøyd, publiserer vi - ofte i løpet av få dager etter godkjenning.",
   },
   {
-    question: "Må jeg levere tekst og bilder selv?",
-    answer:
-      "Nei, ikke for utkastet. Fortell oss litt om bedriften, så lager vi et første utkast. Har du logo eller bilder, kan du sende dem senere.",
-  },
-  {
     question: "Passer dette for min type bedrift?",
     answer:
-      "Vi jobber spesielt godt med håndverkere og lokale småbedrifter - rørleggere, elektrikere, snekkere, malere og lignende. Er du usikker, ta kontakt så finner vi ut av det.",
+      "Ja - vi hjelper lokale småbedrifter som vil bli synlige på nett. Det gjelder blant annet håndverkere, salonger, servering og lignende. Er du usikker, ta kontakt så finner vi ut av det.",
   },
 ];
 

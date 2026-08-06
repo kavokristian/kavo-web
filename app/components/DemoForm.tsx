@@ -12,7 +12,10 @@ const industries = [
   "Snekker",
   "Maler",
   "Frisør",
+  "Skjønnhetssalong",
   "Restaurant",
+  "Café",
+  "Renhold",
   "Annet",
 ];
 

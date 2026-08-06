@@ -24,7 +24,7 @@ const groups = [
   {
     title: "Synlighet",
     items: [
-      "Synlighet i Google-søk",
+      "Teknisk oppsett for Google-søk",
       "Google Business Profile",
       "Lokal synlighet i Maps",
     ],
@@ -33,7 +33,7 @@ const groups = [
     title: "Drift",
     items: [
       "Hosting og domene",
-      "Løpende vedlikehold",
+      "Enkle endringer (tekst, bilder, nye sider)",
       "Oppdateringer og sikkerhet",
       "Support",
     ],
@@ -42,7 +42,7 @@ const groups = [
     title: "Avtale",
     items: [
       "12 måneders binding",
-      "Du beholder domenet ved avslutning",
+      "Ved oppsigelse får du nettsiden til odel og eie",
       "Ingen skjulte kostnader",
     ],
   },
@@ -122,7 +122,7 @@ export default function IncludedPage() {
 
       <PageCTA
         title="Vil du se hvordan det kan bli?"
-        description="Få et gratis utkast av nettsiden din - uten forpliktelser."
+        description="Få gratis utkast - uten forpliktelser."
       />
     </main>
   );
