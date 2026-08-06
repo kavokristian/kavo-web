@@ -32,34 +32,43 @@ export function Pricing() {
 
         <Reveal className="mt-12 sm:mt-16" delay={1}>
           <div className="mx-auto max-w-xl rounded-[1.75rem] border border-border/70 bg-white p-7 shadow-[0_20px_50px_-28px_rgba(17,17,17,0.28)] sm:rounded-[2rem] sm:p-10">
-            <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-8">
-              <div className="text-center">
-                <p className="text-[2.75rem] font-semibold tracking-tight text-foreground sm:text-[3.25rem]">
+            <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
+              <div className="rounded-2xl bg-surface px-5 py-6 text-center">
+                <p className="text-xs font-medium uppercase tracking-wide text-muted">
+                  Betaler du én gang
+                </p>
+                <p className="mt-2 text-[2.5rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
                   7 500 kr
                 </p>
-                <p className="mt-1 text-sm text-muted">Engangskostnad</p>
+                <p className="mt-1 text-sm text-muted">
+                  Oppstart / engangspris
+                </p>
               </div>
 
-              <span
-                className="text-2xl font-medium text-muted-light"
-                aria-hidden="true"
-              >
-                +
-              </span>
-
-              <div className="text-center">
-                <p className="text-[2.75rem] font-semibold tracking-tight text-foreground sm:text-[3.25rem]">
+              <div className="rounded-2xl bg-surface px-5 py-6 text-center">
+                <p className="text-xs font-medium uppercase tracking-wide text-muted">
+                  Deretter hver måned
+                </p>
+                <p className="mt-2 text-[2.5rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
                   500 kr
-                  <span className="text-[1.25rem] font-semibold text-muted sm:text-[1.5rem]">
+                  <span className="text-[1.125rem] font-semibold text-muted sm:text-[1.25rem]">
                     /mnd
                   </span>
                 </p>
-                <p className="mt-1 text-sm text-muted">Fast månedspris</p>
+                <p className="mt-1 text-sm text-muted">
+                  Drift, endringer og support
+                </p>
               </div>
             </div>
 
-            <p className="mt-6 text-center text-sm text-muted">
-              12 måneders binding. Ved oppsigelse får du nettsiden til odel og
+            <p className="mt-6 text-center text-[0.975rem] leading-relaxed text-muted">
+              Kort fortalt:{" "}
+              <span className="font-medium text-foreground">
+                7 500 kr én gang
+              </span>
+              , så{" "}
+              <span className="font-medium text-foreground">500 kr i måneden</span>
+              . 12 måneders binding. Ved oppsigelse får du nettsiden til odel og
               eie - inkludert domenet.
             </p>
 
@@ -88,7 +97,7 @@ export function Pricing() {
                 href="/bestill-demo"
                 className="inline-flex h-12 w-full items-center justify-center rounded-full bg-accent px-7 text-[0.9375rem] font-medium text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 sm:w-auto"
               >
-                Få gratis utkast
+                Få gratis utkast til nettside
               </Link>
             </div>
           </div>

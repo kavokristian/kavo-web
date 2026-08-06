@@ -122,7 +122,7 @@ export default function IncludedPage() {
 
       <PageCTA
         title="Vil du se hvordan det kan bli?"
-        description="Få gratis utkast - uten forpliktelser."
+        description="Få gratis utkast til nettside - uten forpliktelser."
       />
     </main>
   );

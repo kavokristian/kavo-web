@@ -16,7 +16,7 @@ export function Footer() {
             href="/bestill-demo"
             className="inline-flex h-8 w-fit items-center rounded-full bg-foreground px-4 text-xs font-medium text-white transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
-            Få gratis utkast
+            Få gratis utkast til nettside
           </Link>
         </div>
 

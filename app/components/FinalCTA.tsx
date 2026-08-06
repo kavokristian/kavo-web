@@ -24,7 +24,7 @@ export function PageCTA({
                 href="/bestill-demo"
               className="inline-flex h-12 w-full max-w-md items-center justify-center rounded-full bg-accent px-7 text-center text-[0.9375rem] font-medium leading-snug text-white"
             >
-                Få gratis utkast
+                Få gratis utkast til nettside
               </Link>
               <Link
                 href="/"

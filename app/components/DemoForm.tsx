@@ -1,10 +1,7 @@
 "use client";
 
-import { useActionState, useState, type ReactNode } from "react";
-import {
-  submitDemoRequest,
-  type DemoFormState,
-} from "../actions/bestill-demo";
+import { useRouter } from "next/navigation";
+import { useState, type FormEvent, type ReactNode } from "react";
 
 const industries = [
   "Rørlegger",
@@ -19,7 +16,29 @@ const industries = [
   "Annet",
 ];
 
-const initialState: DemoFormState = {};
+type FormValues = {
+  companyName: string;
+  industry: string;
+  location: string;
+  offerings: string;
+  hasWebsite: "Ja" | "Nei" | "";
+  websiteUrl: string;
+  phone: string;
+  email: string;
+  other: string;
+};
+
+const emptyValues: FormValues = {
+  companyName: "",
+  industry: "",
+  location: "",
+  offerings: "",
+  hasWebsite: "",
+  websiteUrl: "",
+  phone: "",
+  email: "",
+  other: "",
+};
 
 const fieldClass =
   "mt-2 w-full rounded-2xl border border-border bg-white px-4 py-3 text-[0.975rem] text-foreground outline-none transition-colors placeholder:text-muted-light focus:border-accent/50 focus:ring-2 focus:ring-accent/15";
@@ -44,14 +63,122 @@ function Section({
 }
 
 export function DemoForm() {
-  const [state, formAction, pending] = useActionState(
-    submitDemoRequest,
-    initialState,
-  );
-  const [hasWebsite, setHasWebsite] = useState<"Ja" | "Nei" | "">("");
+  const router = useRouter();
+  const [values, setValues] = useState<FormValues>(emptyValues);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  function update<K extends keyof FormValues>(key: K, value: FormValues[K]) {
+    setValues((prev) => ({ ...prev, [key]: value }));
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(null);
+
+    if (
+      !values.companyName.trim() ||
+      !values.industry ||
+      !values.location.trim() ||
+      !values.hasWebsite ||
+      !values.offerings.trim() ||
+      !values.phone.trim() ||
+      !values.email.trim()
+    ) {
+      setError("Vennligst fyll ut alle påkrevde felt.");
+      return;
+    }
+
+    if (values.hasWebsite === "Ja" && !values.websiteUrl.trim()) {
+      setError("Oppgi adressen til nettsiden deres.");
+      return;
+    }
+
+    setPending(true);
+
+    const payload = {
+      _subject: `Ny forespørsel om gratis utkast: ${values.companyName.trim()}`,
+      _template: "table",
+      _captcha: "false",
+      Bedriftsnavn: values.companyName.trim(),
+      Bransje: values.industry,
+      Sted: values.location.trim(),
+      "Har nettside": values.hasWebsite,
+      ...(values.hasWebsite === "Ja"
+        ? { Nettsideadresse: values.websiteUrl.trim() }
+        : {}),
+      "Hva tilbyr dere": values.offerings.trim(),
+      Telefon: values.phone.trim(),
+      "E-post": values.email.trim(),
+      Annet: values.other.trim() || "Ikke oppgitt",
+      message: [
+        "Ny forespørsel: Få gratis utkast til nettside",
+        "",
+        `Bedriftsnavn: ${values.companyName.trim()}`,
+        `Bransje: ${values.industry}`,
+        `Sted: ${values.location.trim()}`,
+        `Har nettside: ${values.hasWebsite}`,
+        values.hasWebsite === "Ja"
+          ? `Nettsideadresse: ${values.websiteUrl.trim()}`
+          : null,
+        `Hva tilbyr dere: ${values.offerings.trim()}`,
+        `Telefon: ${values.phone.trim()}`,
+        `E-post: ${values.email.trim()}`,
+        `Annet: ${values.other.trim() || "Ikke oppgitt"}`,
+      ]
+        .filter((line) => line !== null)
+        .join("\n"),
+    };
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/kontakt@kavo.no",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+
+      const result = (await response.json().catch(() => null)) as {
+        success?: string | boolean;
+        message?: string;
+      } | null;
+
+      const ok =
+        response.ok &&
+        (result?.success === true ||
+          result?.success === "true" ||
+          typeof result?.success === "string");
+
+      if (!ok) {
+        const activationHint =
+          result?.message?.toLowerCase().includes("activate") ||
+          result?.message?.toLowerCase().includes("confirm")
+            ? " Sjekk innboksen til kontakt@kavo.no og bekreft FormSubmit-e-posten første gang."
+            : "";
+
+        setError(
+          `Noe gikk galt under sending. Prøv igjen, eller send e-post til kontakt@kavo.no.${activationHint}`,
+        );
+        setPending(false);
+        return;
+      }
+
+      router.push("/bestill-demo/takk");
+    } catch {
+      setError(
+        "Noe gikk galt under sending. Prøv igjen, eller send e-post til kontakt@kavo.no.",
+      );
+      setPending(false);
+    }
+  }
 
   return (
-    <form action={formAction} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       <Section title="Om bedriften">
         <div>
           <label htmlFor="companyName" className={labelClass}>
@@ -61,6 +188,8 @@ export function DemoForm() {
             id="companyName"
             name="companyName"
             required
+            value={values.companyName}
+            onChange={(e) => update("companyName", e.target.value)}
             className={fieldClass}
             placeholder="F.eks. Nordisk VVS AS"
           />
@@ -75,7 +204,8 @@ export function DemoForm() {
             name="industry"
             required
             className={fieldClass}
-            defaultValue=""
+            value={values.industry}
+            onChange={(e) => update("industry", e.target.value)}
           >
             <option value="" disabled>
               Velg bransje
@@ -96,6 +226,8 @@ export function DemoForm() {
             id="location"
             name="location"
             required
+            value={values.location}
+            onChange={(e) => update("location", e.target.value)}
             className={fieldClass}
             placeholder="F.eks. Oslo"
           />
@@ -110,6 +242,8 @@ export function DemoForm() {
             name="offerings"
             required
             rows={3}
+            value={values.offerings}
+            onChange={(e) => update("offerings", e.target.value)}
             className={fieldClass}
             placeholder="F.eks. installasjon, service og rehabilitering"
           />
@@ -122,7 +256,7 @@ export function DemoForm() {
               <label
                 key={option}
                 className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-colors ${
-                  hasWebsite === option
+                  values.hasWebsite === option
                     ? "border-accent bg-accent-soft text-accent"
                     : "border-border bg-white text-foreground"
                 }`}
@@ -132,8 +266,9 @@ export function DemoForm() {
                   name="hasWebsite"
                   value={option}
                   required
+                  checked={values.hasWebsite === option}
                   className="sr-only"
-                  onChange={() => setHasWebsite(option)}
+                  onChange={() => update("hasWebsite", option)}
                 />
                 {option}
               </label>
@@ -141,7 +276,7 @@ export function DemoForm() {
           </div>
         </fieldset>
 
-        {hasWebsite === "Ja" ? (
+        {values.hasWebsite === "Ja" ? (
           <div>
             <label htmlFor="websiteUrl" className={labelClass}>
               Adresse til nettsiden
@@ -150,6 +285,8 @@ export function DemoForm() {
               id="websiteUrl"
               name="websiteUrl"
               required
+              value={values.websiteUrl}
+              onChange={(e) => update("websiteUrl", e.target.value)}
               className={fieldClass}
               placeholder="www.bedriften.no"
             />
@@ -167,6 +304,8 @@ export function DemoForm() {
             name="phone"
             type="tel"
             required
+            value={values.phone}
+            onChange={(e) => update("phone", e.target.value)}
             className={fieldClass}
             placeholder="9X XX XX XX"
           />
@@ -181,6 +320,8 @@ export function DemoForm() {
             name="email"
             type="email"
             required
+            value={values.email}
+            onChange={(e) => update("email", e.target.value)}
             className={fieldClass}
             placeholder="navn@bedrift.no"
           />
@@ -194,15 +335,17 @@ export function DemoForm() {
             id="other"
             name="other"
             rows={3}
+            value={values.other}
+            onChange={(e) => update("other", e.target.value)}
             className={fieldClass}
             placeholder="F.eks. ønsker fokus på en bestemt tjeneste"
           />
         </div>
       </Section>
 
-      {state.error ? (
+      {error ? (
         <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-          {state.error}
+          {error}
         </p>
       ) : null}
 

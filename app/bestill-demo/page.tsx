@@ -3,7 +3,7 @@ import { DemoForm } from "../components/DemoForm";
 import { Reveal } from "../components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Få et gratis utkast",
+  title: "Få gratis utkast til nettside",
   description:
     "Fortell oss litt om bedriften din, så lager vi et kostnadsfritt utkast av nettsiden deres.",
 };
@@ -16,7 +16,7 @@ export default function BestillDemoPage() {
           <Reveal>
             <div className="text-center">
               <h1 className="text-[2.25rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
-                Få gratis utkast
+                Få gratis utkast til nettside
               </h1>
               <p className="mx-auto mt-5 max-w-lg text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
                 Svar på noen få spørsmål om bedriften din. Vi lager et

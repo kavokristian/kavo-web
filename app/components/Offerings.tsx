@@ -49,7 +49,7 @@ export function Offerings() {
     <section id="tjenester" className="scroll-mt-24 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <div className="max-w-2xl">
+          <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-[2.25rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem] md:text-[3rem]">
               Hva får du?
             </h2>

@@ -106,7 +106,7 @@ export default function HowItWorksPage() {
 
       <PageCTA
         title="Klar for å komme i gang?"
-        description="Få gratis utkast - uten forpliktelser."
+        description="Få gratis utkast til nettside - uten forpliktelser."
       />
     </main>
   );
