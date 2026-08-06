@@ -1,43 +1,23 @@
-const footerLinks = [
-  { href: "#fordeler", label: "Fordeler" },
-  { href: "#tjenester", label: "Tjenester" },
-  { href: "#slik-fungerer-det", label: "Slik fungerer det" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#kontakt", label: "Kontakt" },
-];
+import Link from "next/link";
 
 export function Footer() {
   return (
     <footer className="border-t border-border pb-10 pt-14 sm:pb-12 sm:pt-16">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <a
-              href="#"
-              className="text-xl font-semibold tracking-tight text-foreground sm:text-[1.375rem]"
-            >
-              Kavo
-            </a>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
-              Vi gjør bedriften din synlig på nett — slik at flere kunder finner
-              deg.
-            </p>
-          </div>
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+          <Link
+            href="/"
+            className="text-xl font-semibold tracking-tight text-foreground sm:text-[1.375rem]"
+          >
+            Kavo
+          </Link>
 
-          <nav aria-label="Footer">
-            <ul className="flex flex-col gap-3 sm:items-end">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted transition-colors duration-200 hover:text-foreground"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <Link
+            href="/bestill-demo"
+            className="inline-flex h-auto min-h-8 w-fit max-w-full items-center rounded-full bg-foreground px-4 py-2 text-left text-xs font-medium leading-snug text-white transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] sm:text-[0.8125rem]"
+          >
+            Få et gratis utkast av nettsiden din
+          </Link>
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">

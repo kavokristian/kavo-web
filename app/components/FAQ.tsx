@@ -7,32 +7,27 @@ const faqs = [
   {
     question: "Hva koster det?",
     answer:
-      "Prisen avhenger av omfanget, men du får alltid et klart tilbud før vi starter. Ingen skjulte kostnader eller timebaserte overraskelser.",
+      "Det koster 5 000 kr engang, pluss 500 kr i måneden. Alt er inkludert - nettside, hosting, drift, Google-synlighet og support. Avtalen har 12 måneders binding.",
+  },
+  {
+    question: "Hva skjer hvis jeg avslutter?",
+    answer:
+      "Du beholder domenet ditt. Nettsiden og driften hos Kavo avsluttes, men domenet er ditt.",
   },
   {
     question: "Hvor lang tid tar det?",
     answer:
-      "De fleste er synlige på nett i løpet av noen uker. Vi avtaler en tydelig tidslinje i den første samtalen, så du vet hva du kan forvente.",
+      "Du får et gratis utkast innen 2-3 virkedager. Når du er fornøyd, publiserer vi - ofte i løpet av få dager etter godkjenning.",
   },
   {
     question: "Må jeg levere tekst og bilder selv?",
     answer:
-      "Vi hjelper deg med struktur og budskap. Har du bilder og info fra før, bruker vi det. Mangler du noe, finner vi en praktisk løsning sammen.",
-  },
-  {
-    question: "Fungerer nettsiden på mobil?",
-    answer:
-      "Ja. Alt vi leverer er mobilvennlig, raskt og enkelt å bruke — fordi det er der de fleste kundene dine søker.",
-  },
-  {
-    question: "Hva skjer etter at alt er publisert?",
-    answer:
-      "Vi følger opp. Du kan også få hjelp med drift, små oppdateringer og videre forbedringer når du trenger det.",
+      "Nei, ikke for utkastet. Fortell oss litt om bedriften, så lager vi et første utkast. Har du logo eller bilder, kan du sende dem senere.",
   },
   {
     question: "Passer dette for min type bedrift?",
     answer:
-      "Vi jobber spesielt godt med håndverkere og lokale småbedrifter — rørleggere, elektrikere, snekkere, malere og lignende. Er du usikker, book en samtale så finner vi ut av det.",
+      "Vi jobber spesielt godt med håndverkere og lokale småbedrifter - rørleggere, elektrikere, snekkere, malere og lignende. Er du usikker, ta kontakt så finner vi ut av det.",
   },
 ];
 
@@ -45,10 +40,10 @@ export function FAQ() {
         <Reveal>
           <div className="text-center">
             <h2 className="text-[2.25rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem] md:text-[3rem]">
-              FAQ
+              Vanlige spørsmål
             </h2>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
-              Kort og ærlig — det folk vanligvis lurer på før de tar kontakt.
+              Kort og ærlig - det folk vanligvis lurer på før de tar kontakt.
             </p>
           </div>
         </Reveal>

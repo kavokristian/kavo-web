@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#fordeler", label: "Fordeler" },
-  { href: "#tjenester", label: "Tjenester" },
-  { href: "#slik-fungerer-det", label: "Slik fungerer det" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#tjenester", label: "Hva får du?" },
+  { href: "/#pris", label: "Pris" },
+  { href: "/slik-fungerer-det", label: "Slik fungerer det" },
+  { href: "/dette-er-inkludert", label: "Dette er inkludert" },
 ];
 
 export function Navbar() {
@@ -36,35 +37,26 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.25rem] sm:px-8">
-        <a
-          href="#"
+        <Link
+          href="/"
           className="text-[1.375rem] font-semibold tracking-tight text-foreground sm:text-[1.5rem]"
-          aria-label="Kavo – hjem"
+          aria-label="Kavo - hjem"
         >
           Kavo
-        </a>
+        </Link>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="ml-auto hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className="text-[0.9375rem] text-muted transition-colors duration-200 hover:text-foreground"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
-
-        <div className="hidden md:block">
-          <a
-            href="#kontakt"
-            className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[0.875rem] font-medium text-white transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
-          >
-            Kontakt oss
-          </a>
-        </div>
 
         <button
           type="button"
@@ -96,23 +88,16 @@ export function Navbar() {
           <ul className="flex flex-col gap-1">
             {links.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="block rounded-xl px-3 py-3 text-[1.0625rem] text-foreground"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a
-            href="#kontakt"
-            onClick={() => setOpen(false)}
-            className="mt-3 flex h-12 items-center justify-center rounded-full bg-foreground text-[0.9375rem] font-medium text-white"
-          >
-            Kontakt oss
-          </a>
         </div>
       </div>
     </header>

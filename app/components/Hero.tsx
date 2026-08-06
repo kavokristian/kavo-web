@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -9,29 +10,22 @@ export function Hero() {
             Kavo
           </p>
 
-          <h1 className="animate-fade-up delay-100 mt-6 text-[1.625rem] font-semibold leading-[1.25] tracking-tight text-foreground sm:text-[2rem] sm:leading-[1.2] md:text-[2.25rem]">
-            Du er ekspert på faget ditt.
+          <h1 className="animate-fade-up delay-100 mt-6 text-[1.625rem] font-semibold leading-[1.25] tracking-tight text-foreground sm:text-[2rem] sm:leading-[1.2] md:text-[2.375rem]">
+            Nettside og synlighet på Google
           </h1>
 
           <p className="animate-fade-up delay-200 mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
-            Kavo sørger for at bedriften din er synlig på nett, er lett å finne
-            på Google og gir et godt førsteinntrykk når nye kunder søker etter
-            deg.
+            Ingen skjulte kostnader. Vi bygger, drifter og optimaliserer
+            nettsiden din - og sørger for at bedriften din blir synlig på nett.
           </p>
 
-          <div className="animate-fade-up delay-300 mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <a
-              href="#kontakt"
-              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-accent px-7 text-[0.9375rem] font-medium text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 hover:shadow-[0_1px_2px_rgba(37,99,235,0.25),0_12px_28px_rgba(37,99,235,0.3)] active:scale-[0.98] sm:w-auto"
+          <div className="animate-fade-up delay-300 mt-9 flex justify-center">
+            <Link
+              href="/bestill-demo"
+              className="inline-flex h-12 w-full max-w-md items-center justify-center rounded-full bg-accent px-7 text-center text-[0.9375rem] font-medium leading-snug text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 hover:shadow-[0_1px_2px_rgba(37,99,235,0.25),0_12px_28px_rgba(37,99,235,0.3)] active:scale-[0.98] sm:w-auto sm:max-w-none"
             >
-              Kontakt oss
-            </a>
-            <a
-              href="#slik-fungerer-det"
-              className="inline-flex h-12 w-full items-center justify-center rounded-full border border-border bg-white/70 px-7 text-[0.9375rem] font-medium text-foreground backdrop-blur-sm transition-colors duration-200 hover:border-foreground/20 hover:bg-white sm:w-auto"
-            >
-              Se hvordan det fungerer
-            </a>
+              Få et gratis utkast av nettsiden din
+            </Link>
           </div>
         </div>
 
