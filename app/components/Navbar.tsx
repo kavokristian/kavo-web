@@ -7,7 +7,7 @@ const links = [
   { href: "/hvem-er-kavo", label: "Bak Kavo" },
   { href: "/#tjenester", label: "Hva får du?" },
   { href: "/#pris", label: "Pris" },
-  { href: "/slik-fungerer-det", label: "Slik fungerer det" },
+  { href: "/#slik-fungerer-det", label: "Slik fungerer det" },
 ];
 
 export function Navbar() {

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { PageCTA } from "../components/FinalCTA";
 import { Location } from "../components/Location";
 import { Reveal } from "../components/Reveal";
-import { WhyKavo } from "../components/WhyKavo";
 
 export const metadata: Metadata = {
   title: "Bak Kavo",
@@ -70,8 +69,6 @@ export default function HvemErKavoPage() {
           </Reveal>
         </div>
       </section>
-
-      <WhyKavo />
 
       <Location />
 

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Reveal } from "./Reveal";
 import { IconCheck } from "./Icons";
 
@@ -38,7 +37,7 @@ export function Pricing() {
                   Betaler du én gang
                 </p>
                 <p className="mt-2 text-[2.5rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
-                  7 500 kr
+                  2 500 kr
                 </p>
                 <p className="mt-1 text-sm text-muted">
                   Oppstart / engangspris
@@ -50,7 +49,7 @@ export function Pricing() {
                   Deretter hver måned
                 </p>
                 <p className="mt-2 text-[2.5rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
-                  500 kr
+                  900 kr
                   <span className="text-[1.125rem] font-semibold text-muted sm:text-[1.25rem]">
                     /mnd
                   </span>
@@ -64,10 +63,10 @@ export function Pricing() {
             <p className="mt-6 text-center text-[0.975rem] leading-relaxed text-muted">
               Kort fortalt:{" "}
               <span className="font-medium text-foreground">
-                7 500 kr én gang
+                2 500 kr én gang
               </span>
               , så{" "}
-              <span className="font-medium text-foreground">500 kr i måneden</span>
+              <span className="font-medium text-foreground">900 kr i måneden</span>
               . 12 måneders binding. Ved oppsigelse får du nettsiden til odel og
               eie - inkludert domenet.
             </p>
@@ -91,15 +90,6 @@ export function Pricing() {
               Ingen skjulte kostnader. Ingen kompliserte valg. Bare én rettferdig
               pris.
             </p>
-
-            <div className="mt-8 flex justify-center">
-              <Link
-                href="/bestill-demo"
-                className="inline-flex h-12 w-full items-center justify-center rounded-full bg-accent px-7 text-[0.9375rem] font-medium text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_8px_24px_rgba(37,99,235,0.25)] transition-all duration-200 hover:brightness-110 sm:w-auto"
-              >
-                Få gratis utkast til nettside
-              </Link>
-            </div>
           </div>
         </Reveal>
       </div>
