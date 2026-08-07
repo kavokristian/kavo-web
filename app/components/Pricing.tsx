@@ -46,7 +46,7 @@ export function Pricing() {
 
               <div className="rounded-2xl bg-surface px-5 py-6 text-center">
                 <p className="text-xs font-medium uppercase tracking-wide text-muted">
-                  Deretter hver måned
+                  Månedspris
                 </p>
                 <p className="mt-2 text-[2.5rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
                   900 kr
@@ -61,14 +61,8 @@ export function Pricing() {
             </div>
 
             <p className="mt-6 text-center text-[0.975rem] leading-relaxed text-muted">
-              Kort fortalt:{" "}
-              <span className="font-medium text-foreground">
-                2 500 kr én gang
-              </span>
-              , så{" "}
-              <span className="font-medium text-foreground">900 kr i måneden</span>
-              . 12 måneders binding. Ved oppsigelse får du nettsiden til odel og
-              eie - inkludert domenet.
+              Du binder deg i 12 måneder. Etter det – eller hvis du sier opp –
+              er nettsiden og domenet ditt.
             </p>
 
             <div className="my-8 h-px bg-border" />

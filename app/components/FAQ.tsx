@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "Hva skjer hvis jeg avslutter?",
     answer:
-      "Du får nettsiden til odel og eie, inkludert domenet. Driften hos Kavo avsluttes, men alt innhold og domenet er ditt.",
+      "Du får nettsiden til odel og eie, inkludert domenet – enten du sier opp, eller når bindingstiden er over. Driften hos Kavo avsluttes, men alt innhold og domenet er ditt.",
   },
   {
     question: "Hva menes med enkle endringer?",
