@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="flex-1">{children}</div>
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-83Y8CBE41N" />
     </html>
   );
 }
