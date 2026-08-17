@@ -3,9 +3,18 @@ import { DemoForm } from "../components/DemoForm";
 import { Reveal } from "../components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Få gratis utkast til nettside",
+  title: {
+    absolute: "Få gratis utkast til nettside | Kavo",
+  },
   description:
     "Fortell oss litt om bedriften din, så lager vi et kostnadsfritt utkast av nettsiden deres.",
+  alternates: {
+    canonical: "https://www.kavo.no/bestill-demo",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function BestillDemoPage() {

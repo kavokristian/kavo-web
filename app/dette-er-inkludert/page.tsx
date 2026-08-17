@@ -3,9 +3,18 @@ import Link from "next/link";
 import { Reveal } from "../components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Hva er inkludert",
+  title: {
+    absolute: "Hva er inkludert i nettsiden? | Kavo",
+  },
   description:
     "Alt du trenger for å bli sett og tatt seriøst på nett – nettside, Google, Maps, statistikk, drift og support.",
+  alternates: {
+    canonical: "https://www.kavo.no/dette-er-inkludert",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const sections = [

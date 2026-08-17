@@ -5,9 +5,18 @@ import { Location } from "../components/Location";
 import { Reveal } from "../components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Bak Kavo",
+  title: {
+    absolute: "Om Kavo | Nettsider for små bedrifter",
+  },
   description:
     "Vi startet Kavo for å gjøre profesjonelle nettsider tilgjengelige for små bedrifter – enkelt, transparent og til en rettferdig pris.",
+  alternates: {
+    canonical: "https://www.kavo.no/hvem-er-kavo",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function HvemErKavoPage() {
