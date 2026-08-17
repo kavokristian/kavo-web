@@ -5,9 +5,10 @@ const included = [
   "Profesjonell nettside",
   "Hosting og domene",
   "Drift og vedlikehold",
-  "Enkle endringer underveis (tekst, bilder, nye sider)",
+  "Enkle endringer underveis (tekst, bilder, tjenester)",
   "Grunnleggende synlighet på Google",
-  "Google Business Profile",
+  "Google Business Profile / Maps",
+  "Google Analytics",
   "Mobiltilpasset design",
   "Support",
 ];
@@ -37,7 +38,7 @@ export function Pricing() {
                   Betaler du én gang
                 </p>
                 <p className="mt-2 text-[2.5rem] font-semibold tracking-tight text-foreground sm:text-[2.75rem]">
-                  2 500 kr
+                  4 000 kr
                 </p>
                 <p className="mt-1 text-sm text-muted">
                   Oppstart / engangspris

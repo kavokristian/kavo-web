@@ -1,7 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, type FormEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 
 const industries = [
   "Rørlegger",
@@ -16,6 +24,17 @@ const industries = [
   "Annet",
 ];
 
+const websiteGoals = [
+  "Få flere henvendelser / telefoner",
+  "Se mer profesjonell ut",
+  "Bli synlig på Google",
+  "Erstatte gammel nettside",
+  "Annet",
+];
+
+const MAX_IMAGES = 8;
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+
 type FormValues = {
   companyName: string;
   industry: string;
@@ -25,7 +44,17 @@ type FormValues = {
   websiteUrl: string;
   phone: string;
   email: string;
+  websiteGoal: string;
+  serviceArea: string;
+  differentiators: string;
+  inspiration: string;
   other: string;
+};
+
+type ImageItem = {
+  id: string;
+  file: File;
+  previewUrl: string;
 };
 
 const emptyValues: FormValues = {
@@ -37,6 +66,10 @@ const emptyValues: FormValues = {
   websiteUrl: "",
   phone: "",
   email: "",
+  websiteGoal: "",
+  serviceArea: "",
+  differentiators: "",
+  inspiration: "",
   other: "",
 };
 
@@ -45,11 +78,17 @@ const fieldClass =
 
 const labelClass = "block text-sm font-medium tracking-tight text-foreground";
 
+function optionalLabel(value: string) {
+  return value.trim() || "Ikke oppgitt";
+}
+
 function Section({
   title,
+  description,
   children,
 }: {
   title: string;
+  description?: string;
   children: ReactNode;
 }) {
   return (
@@ -57,6 +96,11 @@ function Section({
       <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-[1.375rem]">
         {title}
       </h2>
+      {description ? (
+        <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
+          {description}
+        </p>
+      ) : null}
       <div className="mt-6 space-y-6">{children}</div>
     </section>
   );
@@ -64,12 +108,66 @@ function Section({
 
 export function DemoForm() {
   const router = useRouter();
+  const fileInputId = useId();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [values, setValues] = useState<FormValues>(emptyValues);
+  const [images, setImages] = useState<ImageItem[]>([]);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    return () => {
+      images.forEach((image) => URL.revokeObjectURL(image.previewUrl));
+    };
+    // Only revoke on unmount; individual removals revoke themselves.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function update<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
+  }
+
+  function handleImageSelect(event: ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(event.target.files ?? []);
+    event.target.value = "";
+    if (!files.length) return;
+
+    setError(null);
+
+    const remaining = MAX_IMAGES - images.length;
+    if (remaining <= 0) {
+      setError(`Du kan laste opp maks ${MAX_IMAGES} bilder.`);
+      return;
+    }
+
+    const next: ImageItem[] = [];
+    for (const file of files.slice(0, remaining)) {
+      if (!file.type.startsWith("image/")) {
+        setError("Du kan bare laste opp bildefiler (JPG, PNG, WEBP eller GIF).");
+        continue;
+      }
+      if (file.size > MAX_IMAGE_BYTES) {
+        setError(`Hvert bilde må være under 5 MB. «${file.name}» er for stort.`);
+        continue;
+      }
+      next.push({
+        id: `${file.name}-${file.size}-${file.lastModified}-${Math.random()}`,
+        file,
+        previewUrl: URL.createObjectURL(file),
+      });
+    }
+
+    if (next.length) {
+      setImages((prev) => [...prev, ...next]);
+    }
+  }
+
+  function removeImage(id: string) {
+    setImages((prev) => {
+      const target = prev.find((image) => image.id === id);
+      if (target) URL.revokeObjectURL(target.previewUrl);
+      return prev.filter((image) => image.id !== id);
+    });
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -96,22 +194,41 @@ export function DemoForm() {
 
     setPending(true);
 
-    const payload = {
-      _subject: `Ny forespørsel om gratis utkast: ${values.companyName.trim()}`,
-      _template: "table",
-      _captcha: "false",
-      Bedriftsnavn: values.companyName.trim(),
-      Bransje: values.industry,
-      Sted: values.location.trim(),
-      "Har nettside": values.hasWebsite,
-      ...(values.hasWebsite === "Ja"
-        ? { Nettsideadresse: values.websiteUrl.trim() }
-        : {}),
-      "Hva tilbyr dere": values.offerings.trim(),
-      Telefon: values.phone.trim(),
-      "E-post": values.email.trim(),
-      Annet: values.other.trim() || "Ikke oppgitt",
-      message: [
+    const websiteGoal = optionalLabel(values.websiteGoal);
+    const serviceArea = optionalLabel(values.serviceArea);
+    const differentiators = optionalLabel(values.differentiators);
+    const inspiration = optionalLabel(values.inspiration);
+    const other = optionalLabel(values.other);
+
+    const outbound = new FormData();
+    outbound.append(
+      "_subject",
+      `Ny forespørsel om gratis utkast: ${values.companyName.trim()}`,
+    );
+    outbound.append("_template", "table");
+    outbound.append("_captcha", "false");
+    outbound.append("Bedriftsnavn", values.companyName.trim());
+    outbound.append("Bransje", values.industry);
+    outbound.append("Sted", values.location.trim());
+    outbound.append("Har nettside", values.hasWebsite);
+    if (values.hasWebsite === "Ja") {
+      outbound.append("Nettsideadresse", values.websiteUrl.trim());
+    }
+    outbound.append("Hva tilbyr dere", values.offerings.trim());
+    outbound.append("Viktigste mål med nettsiden", websiteGoal);
+    outbound.append("Dekningsområde", serviceArea);
+    outbound.append("Hva skiller dere ut", differentiators);
+    outbound.append("Nettsider dere liker", inspiration);
+    outbound.append("Telefon", values.phone.trim());
+    outbound.append("E-post", values.email.trim());
+    outbound.append("Annet", other);
+    outbound.append(
+      "Antall bilder",
+      images.length ? String(images.length) : "Ingen",
+    );
+    outbound.append(
+      "message",
+      [
         "Ny forespørsel: Få gratis utkast til nettside",
         "",
         `Bedriftsnavn: ${values.companyName.trim()}`,
@@ -122,13 +239,22 @@ export function DemoForm() {
           ? `Nettsideadresse: ${values.websiteUrl.trim()}`
           : null,
         `Hva tilbyr dere: ${values.offerings.trim()}`,
+        `Viktigste mål med nettsiden: ${websiteGoal}`,
+        `Dekningsområde: ${serviceArea}`,
+        `Hva skiller dere ut: ${differentiators}`,
+        `Nettsider dere liker: ${inspiration}`,
+        `Antall bilder: ${images.length || "Ingen"}`,
         `Telefon: ${values.phone.trim()}`,
         `E-post: ${values.email.trim()}`,
-        `Annet: ${values.other.trim() || "Ikke oppgitt"}`,
+        `Annet: ${other}`,
       ]
         .filter((line) => line !== null)
         .join("\n"),
-    };
+    );
+
+    images.forEach((image, index) => {
+      outbound.append(`Bilde ${index + 1}`, image.file, image.file.name);
+    });
 
     try {
       const response = await fetch(
@@ -136,10 +262,9 @@ export function DemoForm() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify(payload),
+          body: outbound,
         },
       );
 
@@ -292,6 +417,126 @@ export function DemoForm() {
             />
           </div>
         ) : null}
+      </Section>
+
+      <Section
+        title="For et bedre utkast"
+        description="Valgfritt – men jo mer du fyller ut, jo mer treffsikkert blir utkastet."
+      >
+        <div>
+          <label htmlFor="websiteGoal" className={labelClass}>
+            Hva er viktigst at nettsiden skal hjelpe dere med? (valgfritt)
+          </label>
+          <select
+            id="websiteGoal"
+            name="websiteGoal"
+            className={fieldClass}
+            value={values.websiteGoal}
+            onChange={(e) => update("websiteGoal", e.target.value)}
+          >
+            <option value="">Velg hvis du vil</option>
+            {websiteGoals.map((goal) => (
+              <option key={goal} value={goal}>
+                {goal}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="serviceArea" className={labelClass}>
+            Hvilke områder dekker dere? (valgfritt)
+          </label>
+          <input
+            id="serviceArea"
+            name="serviceArea"
+            value={values.serviceArea}
+            onChange={(e) => update("serviceArea", e.target.value)}
+            className={fieldClass}
+            placeholder="F.eks. Oslo og Akershus, eller hele Sørlandet"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="differentiators" className={labelClass}>
+            Hva skiller dere fra andre i bransjen? (valgfritt)
+          </label>
+          <textarea
+            id="differentiators"
+            name="differentiators"
+            rows={3}
+            value={values.differentiators}
+            onChange={(e) => update("differentiators", e.target.value)}
+            className={fieldClass}
+            placeholder="F.eks. rask utrykning, fast pris, lang erfaring, familiebedrift"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="inspiration" className={labelClass}>
+            Nettsider dere liker stilen til? (valgfritt)
+          </label>
+          <textarea
+            id="inspiration"
+            name="inspiration"
+            rows={2}
+            value={values.inspiration}
+            onChange={(e) => update("inspiration", e.target.value)}
+            className={fieldClass}
+            placeholder="Lim inn 1–2 lenker, eller beskriv stilen kort"
+          />
+        </div>
+
+        <div>
+          <label htmlFor={fileInputId} className={labelClass}>
+            Last opp bilder (valgfritt)
+          </label>
+          <p className="mt-1 text-sm text-muted">
+            Logo, team, arbeid eller lokaler. Opptil {MAX_IMAGES} bilder, maks 5
+            MB per fil.
+          </p>
+          <input
+            ref={fileInputRef}
+            id={fileInputId}
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            multiple
+            className="sr-only"
+            onChange={handleImageSelect}
+          />
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            className="mt-3 inline-flex h-11 items-center justify-center rounded-full border border-border bg-white px-5 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:bg-accent-soft/40"
+          >
+            Velg bilder
+          </button>
+
+          {images.length > 0 ? (
+            <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {images.map((image) => (
+                <li
+                  key={image.id}
+                  className="relative overflow-hidden rounded-2xl border border-border/70 bg-surface"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image.previewUrl}
+                    alt={image.file.name}
+                    className="aspect-square w-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeImage(image.id)}
+                    className="absolute right-2 top-2 rounded-full bg-foreground/80 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm transition-opacity hover:bg-foreground"
+                  >
+                    Fjern
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
       </Section>
 
       <Section title="Kontakt">

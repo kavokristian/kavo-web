@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal } from "./Reveal";
 import {
   FeatureChip,
@@ -93,6 +94,15 @@ export function Offerings() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-10 text-center sm:mt-12">
+          <Link
+            href="/dette-er-inkludert"
+            className="text-[0.975rem] font-medium text-accent underline-offset-4 transition-colors hover:underline"
+          >
+            Se alt som er inkludert
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

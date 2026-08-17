@@ -7,7 +7,7 @@ const faqs = [
   {
     question: "Hva koster det?",
     answer:
-      "Du betaler 2 500 kr én gang (oppstart), pluss 900 kr i måneden. Alt er inkludert - nettside, hosting, drift, grunnleggende Google-synlighet og support. Avtalen har 12 måneders binding.",
+      "Du betaler 4 000 kr én gang (oppstart), pluss 900 kr i måneden. Alt er inkludert - nettside, hosting, drift, grunnleggende Google-synlighet og support. Avtalen har 12 måneders binding.",
   },
   {
     question: "Hva skjer hvis jeg avslutter?",
