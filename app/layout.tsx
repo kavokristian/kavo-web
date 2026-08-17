@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.kavo.no"),
   title: {
     default: "Kavo - Synlighet på nett for norske bedrifter",
     template: "%s - Kavo",
